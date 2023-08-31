@@ -1,16 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
-//#include<windows.h>
-//#include<graphics.h>
+
+struct reserve{
+	int id;
+	int q;
+}order,a;
 
 int main()
 {
 	FILE *p;
-	int q1,q2,q3;
 	char add;
-	int choice,bf,l,d;
-	p=fopen("D:\\reservation.txt","a+");
-	if(p=NULL){
+	int choice;
+	p=fopen("D:\\reservation.dat","ab+");
+	if(p==NULL){
 		printf("\n error! File not found");
 		exit(0);
 	}
@@ -31,8 +33,7 @@ int main()
 	switch(choice)
 	{
 		case 1:
-		    //settextsty
-			//outtext(150,150,"KATHMANDU HOTEL");
+		    
 			printf("\n                            KATHMANDU HOTEL ");
 			printf("\n\n                             Breakfast");
 		    printf("\n                        ********************");
@@ -48,24 +49,21 @@ int main()
 			printf("\n\t10.SAUSAGE....................................RS100");
 			fast:
 			printf("\n\n\tEnter id of the food you want to have for breakfast: ");
-			scanf("%d",&bf);
-		/*	printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q1);
-		//	scanf("%d",&d);
-			
-			fprintf(p,"%d",bf);
-			fprintf(p,"%d",q1);*/
-			if(bf<=0||bf>10)
+			scanf("%d",&order.id);
+	
+			if(order.id<=0||order.id>10)
 			{
 				printf("\n\tPlease enter between 1-10");
 				goto fast;
 			}
 			printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q1);
-		//	scanf("%d",&d);
-			
-			fprintf(p,"%d",bf);
-			fprintf(p,"%d",q1);
+			scanf("%d",&order.q);
+		
+			fwrite(&order,sizeof(order),1,p);
+			/*rewind(p);
+			while(fread(&a,sizeof(a),1,p)==1){
+			printf("\n the id and q is %d%d",a.id,a.q);
+	}*/
 			fflush(stdin);
 			printf("\n\t Do you want to add other food");
 			printf("\n\t if yes press y or Y else any key to exit: ");
@@ -97,22 +95,17 @@ int main()
 		    printf("\n\t20.PIZZA...........................................RS200");
 		    lun:
 			printf("\n\n\tEnter id of the food you want to have for breakfast: ");
-			scanf("%d",&l);
-		/*	printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q2);
-			
-			fprintf(p,"%d",l);
-			fprintf(p,"%d",q2);*/
-            if(l<=10||l>20)
+			scanf("%d",&order.id);
+		
+            if(order.id<=10||order.id>20)
 			{
 				printf("\n\tPlease enter between 11-20");
 				goto lun;
 			}
 			printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q2);
+			scanf("%d",&order.q);
 			
-			fprintf(p,"%d",l);
-			fprintf(p,"%d",q2);
+			fwrite(&order,sizeof(order),1,p);
 			fflush(stdin);
 			printf("\n\tDo you want to add other food");
 			printf("\n\t if yes press y or Y else any key to exit: ");
@@ -143,20 +136,16 @@ int main()
 		    printf("\n\t30.PANEER ROTI...................................RS200");
 		    din:
 			printf("\n\n\tEnter id of the food you want to have for breakfast: ");
-			scanf("%d",&d);
-			/*printf("\n\n\tEnte quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q3);			
-			fprintf(p,"%d",d);
-			fprintf(p,"%d",q3);*/
-			if(d<=20||d>30)
+			scanf("%d",&order.id);
+			
+			if(order.id<=20||order.id>30)
 			{
 				printf("\n\tPlease enter between 21-30");
 				goto din;
 			}
-			printf("\n\n\tEnte quantity/serving of the food you want to have for breakfast: ");
-			scanf("%d",&q3);			
-			fprintf(p,"%d",d);
-			fprintf(p,"%d",q3);
+			printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
+			scanf("%d",&order.q);			
+			fwrite(&order,sizeof(order),1,p);
 			fflush(stdin);
 			printf("\n\tDo you want to add other food");
 			printf("\n\t if yes press y or Y else any key to exit: ");
@@ -172,7 +161,7 @@ int main()
 		    break;
 				
 	}
-
+fclose(p);
 return 0;
 
 }
