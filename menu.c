@@ -17,11 +17,13 @@ int main()
 		exit(0);
 	}
 //	printf("               KATHMANDU HOTEL");
+    
 	printf("\n                    Food Menu");
 	printf("\n         *******************************");
 	printf("\n\n\t1.Breakfast");
 	printf("\n\t2.Lunch");
 	printf("\n\t3.Dinner");
+	
 	flag:
     printf("\n\tEnter your choice: ");
     scanf("%d",&choice);
@@ -84,17 +86,17 @@ int main()
 			printf("\n\n                               Lunch");
 			printf("\n                           ***********************");
 			printf("\n\t11.SANDWICHES OR WRAPS.............................RS200");
-		    printf("\n\t12.KATHI ROLLS.....................................RS200");
-		    printf("\n\t13.MOONG DAL CHILLA................................RS200");
-		    printf("\n\t14.POHA TIKKA......................................RS200");
-		    printf("\n\t15.BIRYANI.........................................RS200");
-		    printf("\n\t16.STUFFFED PARATHAS...............................RS200");
-		    printf("\n\t17.SIJI PANCAKE....................................RS200");
+		    printf("\n\t12.KATHI ROLLS.....................................RS100");
+		    printf("\n\t13.MOONG DAL CHILLA................................RS210");
+		    printf("\n\t14.POHA TIKKA......................................RS70");
+		    printf("\n\t15.BIRYANI.........................................RS100");
+		    printf("\n\t16.STUFFFED PARATHAS...............................RS150");
+		    printf("\n\t17.SIJI PANCAKE....................................RS120");
 		    printf("\n\t18.VEG BURGER......................................RS200");
-		    printf("\n\t19.MUFFINS.........................................RS200");
+		    printf("\n\t19.MUFFINS.........................................RS170");
 		    printf("\n\t20.PIZZA...........................................RS200");
 		    lun:
-			printf("\n\n\tEnter id of the food you want to have for breakfast: ");
+			printf("\n\n\tEnter id of the food you want to have for lunch: ");
 			scanf("%d",&order.id);
 		
             if(order.id<=10||order.id>20)
@@ -102,7 +104,7 @@ int main()
 				printf("\n\tPlease enter between 11-20");
 				goto lun;
 			}
-			printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
+			printf("\n\n\tEnter quantity/serving of the food you want to have for lunch: ");
 			scanf("%d",&order.q);
 			
 			fwrite(&order,sizeof(order),1,p);
@@ -124,18 +126,18 @@ int main()
 			 printf("\n                              KATHMANDU HOTEL");
 			printf("\n\n                               Dinner");
 			printf("\n                           ***********************");
-		    printf("\n\t21.PULAU.........................................RS200");
+		    printf("\n\t21.PULAU.........................................RS250");
 		    printf("\n\t22.DAL MAKHANI...................................RS200");
-		    printf("\n\t23.RAJMA PANEER CURRY............................RS200");
-		    printf("\n\t24.CHICKEN RICE..................................RS200");
-		    printf("\n\t25.THAKALI KHANA VEG.............................RS200");
+		    printf("\n\t23.RAJMA PANEER CURRY............................RS150");
+		    printf("\n\t24.CHICKEN RICE..................................RS120");
+		    printf("\n\t25.THAKALI KHANA VEG.............................RS100");
 		    printf("\n\t26.THAKALI NON-VEG...............................RS200");
-		    printf("\n\t27.NAN ROTI WITH CURRY...........................RS200");
-		    printf("\n\t28.PASTA.........................................RS200");
+		    printf("\n\t27.NAN ROTI WITH CURRY...........................RS210");
+		    printf("\n\t28.PASTA.........................................RS130");
 		    printf("\n\t29.MIX FRUIT JUICE...............................RS200");
 		    printf("\n\t30.PANEER ROTI...................................RS200");
 		    din:
-			printf("\n\n\tEnter id of the food you want to have for breakfast: ");
+			printf("\n\n\tEnter id of the food you want to have for dinner: ");
 			scanf("%d",&order.id);
 			
 			if(order.id<=20||order.id>30)
@@ -143,7 +145,7 @@ int main()
 				printf("\n\tPlease enter between 21-30");
 				goto din;
 			}
-			printf("\n\n\tEnter quantity/serving of the food you want to have for breakfast: ");
+			printf("\n\n\tEnter quantity/serving of the food you want to have for dinner: ");
 			scanf("%d",&order.q);			
 			fwrite(&order,sizeof(order),1,p);
 			fflush(stdin);
@@ -159,7 +161,7 @@ int main()
 				exit(0);
 			}
 		    break;
-				
+			
 	}
 fclose(p);
 return 0;
